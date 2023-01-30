@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.f1aa71c9.css",
-    "main.js": "/static/js/main.7835d059.js",
+    "main.js": "/static/js/main.758996dc.js",
     "static/js/787.ca41e0bd.chunk.js": "/static/js/787.ca41e0bd.chunk.js",
     "static/media/WhitePaper - EN.pdf": "/static/media/WhitePaper - EN.3dd083ffc8333a942435.pdf",
     "static/media/WhitePaper - FR.pdf": "/static/media/WhitePaper - FR.f5b490115d74ec7c8df5.pdf",
@@ -100,11 +100,11 @@
     "static/media/huawei.png": "/static/media/huawei.16cbaa6220f91674316a.png",
     "index.html": "/index.html",
     "main.f1aa71c9.css.map": "/static/css/main.f1aa71c9.css.map",
-    "main.7835d059.js.map": "/static/js/main.7835d059.js.map",
+    "main.758996dc.js.map": "/static/js/main.758996dc.js.map",
     "787.ca41e0bd.chunk.js.map": "/static/js/787.ca41e0bd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f1aa71c9.css",
-    "static/js/main.7835d059.js"
+    "static/js/main.758996dc.js"
   ]
 }
