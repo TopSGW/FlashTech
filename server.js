@@ -1,9 +1,10 @@
 require('dotenv').config();
+const https = require("https");
+const fs = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const sgMail = require('@sendgrid/mail');
-console.log(process.env.SEND_GRIDAPIKEY);
 sgMail.setApiKey(process.env.SEND_GRIDAPIKEY);
 
 const sendEmail = ({ to, from, subject, text, html }) => {
@@ -12,7 +13,12 @@ const sendEmail = ({ to, from, subject, text, html }) => {
 };
 
 const app = express();
-app.use(cors());
+// app.use(cors({
+//     origin: 'https://flash-technologies.org/'
+// }));
+app.use(cors({
+    origin: '*'
+}));
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -20,6 +26,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.use(express.static('build'));
+
 app.post('/messages', async (req, res)=>{
 
     const info = req.body;
@@ -30,8 +37,9 @@ app.post('/messages', async (req, res)=>{
     try {
         await sendEmail({
             //the client email 
-            to: 'contact@flash-technologies.com',
-            // to: 'web.smartdev22@gmail.com',
+           to: 'contact@flash-technologies.com',
+            // to: 'junior950803@gmail.com',
+           // to: 'web.smartdev22@gmail.com',
             //sendGrid sender id 
             from: info.emailAddress,
             subject: info.firstName + info.lastName,
@@ -49,4 +57,16 @@ app.post('/messages', async (req, res)=>{
 
 const port = 3000;
 
-app.listen(port, console.log(`server running on port 3000`));
+// app.listen(port, console.log(`server running on port 3000`));
+
+const options = {
+    key: fs.readFileSync("server.key"),
+    cert: fs.readFileSync("server.cert"),
+  };
+
+// Creating https server by passing
+// options and app object
+https.createServer(options, app)
+.listen(port, function (req, res) {
+  console.log("Server started at port 3000");
+});
