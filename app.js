@@ -5,6 +5,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const sgMail = require('@sendgrid/mail');
+const hostname = '92.205.104.154';
 sgMail.setApiKey(process.env.SEND_GRIDAPIKEY);
 
 const sendEmail = ({ to, from, subject, text, html }) => {
@@ -26,6 +27,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.use(express.static('build'));
+
+app.get('/', (req, res) => res.send('Hellow world'))
 
 app.post('/messages', async (req, res)=>{
 
@@ -67,6 +70,6 @@ const options = {
 // Creating https server by passing
 // options and app object
 https.createServer(options, app)
-.listen(port, function (req, res) {
-  console.log("Server started at port 3000");
+.listen(port, hostname, function (req, res) {
+    console.log(`Server running at http://${hostname}:${port}/`);
 });
