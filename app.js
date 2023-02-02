@@ -30,7 +30,7 @@ app.use(express.static('build'));
 
 app.get('/', (req, res) => res.send('Hellow world'))
 
-app.post('/messages', async (req, res)=>{
+app.post('/api/messages', async (req, res)=>{
 
     const info = req.body;
     console.log(info);
