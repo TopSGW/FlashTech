@@ -69,7 +69,7 @@ const options = {
 
 // Creating https server by passing
 // options and app object
-https.createServer(options, app)
+https.createServer(app)
 .listen(port, hostname, function (req, res) {
     console.log(`Server running at http://${hostname}:${port}/`);
 });
