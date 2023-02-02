@@ -1,6 +1,4 @@
 require('dotenv').config();
-const https = require("https");
-const fs = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -24,9 +22,7 @@ app.use(cors({
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
-app.use(bodyParser.json())
-
-app.use(express.static('build'));
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => res.send('Hellow world'))
 
@@ -60,16 +56,11 @@ app.post('/api/messages', async (req, res)=>{
 
 const port = 3000;
 
-// app.listen(port, console.log(`server running on port 3000`));
-
-const options = {
-    key: fs.readFileSync("server.key"),
-    cert: fs.readFileSync("server.cert"),
-  };
+app.listen(port, console.log(`server running on port 3000`));
 
 // Creating https server by passing
 // options and app object
-https.createServer(app)
-.listen(port, hostname, function (req, res) {
-    console.log(`Server running at http://${hostname}:${port}/`);
-});
+// https.createServer(app)
+// .listen(port, hostname, function (req, res) {
+//     console.log(`Server running at http://${hostname}:${port}/`);
+// });
