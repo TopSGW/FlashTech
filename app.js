@@ -56,7 +56,7 @@ app.post('/api/messages', async (req, res)=>{
 
 const port = 3000;
 
-app.listen(port, console.log(`server running on port 6000`));
+app.listen(port, console.log(`server running on port 3000`));
 
 // Creating https server by passing
 // options and app object
